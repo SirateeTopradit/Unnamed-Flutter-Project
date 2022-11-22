@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:borrow_plz/screen/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         fontFamily: 'prompt',
         primarySwatch: Colors.blue,
+        
       ),
+      home: const HomeScreen(),
     );
   }
 }

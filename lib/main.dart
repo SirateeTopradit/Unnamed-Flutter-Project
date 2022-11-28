@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:borrow_plz/screen/home.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 
+
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  @override
 
   // This widget is the root of your application.
   @override
+  
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          //color set to transperent or set your own color
+          statusBarIconBrightness: Brightness.dark, 
+          //set brightness for icons, like dark background light icons
+      )
+    );
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -26,6 +40,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         
       ),
+      
       home: const HomeScreen(),
     );
   }

@@ -62,6 +62,10 @@ android {
     }
 }
 
+apply plugin: 'com.android.application'
+// Add the following line:
+apply plugin: 'com.google.gms.google-services'
+
 flutter {
     source '../..'
 }

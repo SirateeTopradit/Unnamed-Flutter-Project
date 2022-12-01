@@ -12,23 +12,6 @@ import 'package:borrow_plz/screen/welcome.dart';
 
 import 'home.dart';
 
-Future<UserCredential> signInWithGoogle() async {
-  // Trigger the authentication flow
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-  // Obtain the auth details from the request
-  final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-
-  // Create a new credential
-  final credential = GoogleAuthProvider.credential(
-    accessToken: googleAuth?.accessToken,
-    idToken: googleAuth?.idToken,
-  );
-
-  // Once signed in, return the UserCredential
-  return await FirebaseAuth.instance.signInWithCredential(credential);
-}
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -139,7 +122,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                   }
                                 },
                               ),
-                            )
+                            ),
+                            InkWell(
+                                child: Container(
+                                    constraints:
+                                        BoxConstraints.expand(height: 50),
+                                    child: Text("Login with Google ",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.blue[600])),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(16),
+                                        color: Colors.white),
+                                    margin: EdgeInsets.only(top: 12),
+                                    padding: EdgeInsets.all(12)),
+                                onTap: () => loginWithGoogle(context))
                           ],
                         ),
                       ),
